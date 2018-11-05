@@ -1,5 +1,6 @@
 package Other;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -12,13 +13,14 @@ public class Init{
     public static WebDriver getDriver() {
         return driver;
     }
-
+    @Step("1. Перейти на chaihona.ru")
     public static void begin(boolean maximaze){
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
         driver = new ChromeDriver();
         if (maximaze) driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
         //1. Перейти на chaihona.ru
+
         driver.get("https://chaihona.ru/");
     }
 

@@ -1,5 +1,6 @@
 package steps;
 
+import io.qameta.allure.Step;
 import org.junit.Assert;
 import pages.CartPage;
 
@@ -10,7 +11,7 @@ import java.util.TreeSet;
 public class CartPageSteps {
 
     CartPage cartPage = new CartPage();
-
+    @Step("Проверка товаров в корзине на соответсвие совершенных ранее дейтсвий")
     public void checkProdAndSummInCart(){
         ArrayList<String> listProd = cartPage.getNameProdFromTableCart();
         ArrayList<String> test = ProductGreedPageSteps.getProdThatWeChose();
@@ -21,7 +22,7 @@ public class CartPageSteps {
             Assert.fail("Итоговая сумма товаров в корзине не соответсвует сумме посчитанной вручную при добавлении товаров из каталога");
         }
     }
-
+    @Step("Удалить все элементы в корзине")
     public void deleteProd (){
         int count = ProductGreedPageSteps.getProdThatWeChose().size();
         if (count > 0){
@@ -31,7 +32,7 @@ public class CartPageSteps {
         }
 
     }
-
+    @Step("Проверяем, что корзина пустая")
     public void isEmpty () {
         cartPage.isCartEmpty();
     }
